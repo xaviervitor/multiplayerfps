@@ -12,7 +12,7 @@ public class MultiplayerFPS : ModuleRules
 
 		PrivateDependencyModuleNames.AddRange(new string[] { });
 
-		// TODO: remove never optimizate option
+		// TODO: remove never optimize option
 		OptimizeCode = CodeOptimization.Never;
 
 		// Uncomment if you are using Slate UI

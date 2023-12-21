@@ -11,7 +11,7 @@ class MULTIPLAYERFPS_API APickup : public AActor {
 	GENERATED_BODY()
 	
 	UPROPERTY(EditAnywhere)
-	class UStaticMeshComponent* StaticMeshComponent;
+	class USphereComponent* SphereComponent;
 
 	UPROPERTY(EditAnywhere)
 	class URotatingMovementComponent* RotatingMovementComponent;

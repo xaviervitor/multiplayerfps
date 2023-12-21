@@ -1,10 +1,13 @@
 #include "Pickup.h"
+
+#include "Components/SphereComponent.h"
 #include "GameFramework/RotatingMovementComponent.h"
 
 APickup::APickup() {
-	StaticMeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("StaticMeshComponent"));
-	StaticMeshComponent->SetCollisionProfileName("OverlapAll");
-	StaticMeshComponent->OnComponentBeginOverlap.AddDynamic(this, &APickup::OnBeginOverlap);
+	SphereComponent = CreateDefaultSubobject<USphereComponent>(TEXT("SphereComponent"));
+	SphereComponent->SetCollisionProfileName("OverlapAll");
+	SphereComponent->OnComponentBeginOverlap.AddDynamic(this, &APickup::OnBeginOverlap);
+	RootComponent = SphereComponent;
 
 	RotatingMovementComponent = CreateDefaultSubobject<URotatingMovementComponent>(TEXT("RotatingMovementComponent"));
 	RotatingMovementComponent->RotationRate = FRotator(0.0f, 90.0f, 0.0f);

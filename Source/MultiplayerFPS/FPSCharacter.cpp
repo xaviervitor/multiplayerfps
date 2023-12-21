@@ -299,6 +299,7 @@ void AFPSCharacter::Damage(AFPSCharacter* KillerCharacter, float Amount) {
 		PlaySoundAtLocationClient(DamageSound);
 	} else {
 		PlayAnimMontageNetMulticast(DeathAnimMontage);
+		// TODO: wait for some seconds before respawning, so that the animation can play
 		GameMode->OnDeath(GetController(), KillerCharacter->GetController());
 	}
 }

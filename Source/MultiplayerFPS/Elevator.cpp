@@ -40,7 +40,7 @@ void AElevator::StartElevator() {
 	if (ElevatorStops.Num() < 2) return;
 	BoxComponent->SetCollisionProfileName("NoCollision");
 	
-	//TODO: reutilizar latent actions
+	//TODO: reutilize latent actions
 	int32 UUID = FMath::RandRange(0, 1000000);
 
 	FLatentActionInfo LatentInfo;
@@ -48,6 +48,11 @@ void AElevator::StartElevator() {
 	LatentInfo.ExecutionFunction = "StopElevator";
 	LatentInfo.UUID = UUID;
 	LatentInfo.Linkage = 0;
+
+	// FIXME:
+	//[CRASH]
+	// Assertion failed: (Index >= 0) & (Index < ArrayNum) [File:C:\Program Files\Epic Games\UE_5.2\Engine\Source\Runtime\Core\Public\Containers\Array.h] [Line: 752] Array index out of bounds: 2 from an array of size 2
+	// UnrealEditor_MultiplayerFPS!AElevator::StartElevator() [C:\Users\xavie\Documents\Unreal Projects\multiplayerfps\Source\MultiplayerFPS\Elevator.cpp:51]
 	GetWorld()->GetLatentActionManager().AddNewAction(this, UUID, new ElevatorLatentAction(
 		this, ElevatorStops[CurrentStopIndex], ElevatorStops[CurrentStopIndex + 1], GetWorld()->DeltaTimeSeconds, LatentInfo));
 	CurrentStopIndex++;

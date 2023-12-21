@@ -37,4 +37,7 @@ public:
 	UFUNCTION(BlueprintPure) FORCEINLINE FString GetName() { return WeaponName; }
 
 	FORCEINLINE EWeaponType GetWeaponType() { return WeaponType; }
+
+	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable)
+	void OnFire();
 };

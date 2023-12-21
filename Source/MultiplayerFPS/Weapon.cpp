@@ -46,6 +46,7 @@ void AWeapon::Fire() {
 		GetWorldTimerManager().SetTimer(FireTimer, FireRate, false);
 
 		FireHitscan();
+		OnFire();
 	} else {
 		if (NoAmmoSound) {
 			FPSCharacter->PlaySoundAtLocationClient(NoAmmoSound);
